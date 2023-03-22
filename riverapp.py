@@ -59,14 +59,14 @@ inflow = np.zeros_like(t)
     
 ### 인터벌 고려해서 입력 받음 끝
 
-inflow[:4 * 3600 /30] = inflow_0
-inflow[4 * 3600 /30:8 * 3600 /30] = inflow_4
-inflow[8 * 360 /300:12 * 3600 /30] = inflow_8
-inflow[12 * 3600 /30:16 * 3600 /30] = inflow_12
-inflow[16 * 3600 /30:20 * 3600 /30] = inflow_16
-inflow[20 * 3600 /30:24 * 3600 /30] = inflow_20
-inflow[24 * 3600 /30:28 * 3600 /30] = inflow_24
-inflow[28 * 3600 /30:32 * 3600 /30] = inflow_28
+inflow[:4 * 3600 //30] = inflow_0
+inflow[4 * 3600 //30:8 * 3600 //30] = inflow_4
+inflow[8 * 360 //300:12 * 3600 //30] = inflow_8
+inflow[12 * 3600 //30:16 * 3600 //30] = inflow_12
+inflow[16 * 3600 //30:20 * 3600 //30] = inflow_16
+inflow[20 * 3600 //30:24 * 3600 //30] = inflow_20
+inflow[24 * 3600 //30:28 * 3600 //30] = inflow_24
+inflow[28 * 3600 //30:32 * 3600 //30] = inflow_28
 
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
 
