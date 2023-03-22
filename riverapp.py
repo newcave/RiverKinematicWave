@@ -89,7 +89,7 @@ axs[0, 1].legend()
 
 t_list = [4*3600, 12*3600, 20*3600] # 4시간, 12시간, 20시간
 for i, t_idx in enumerate(t_list):
-    axs[1, 0].plot(X, Q[t_idx // dt, :10], label=f'{t_idx // 3600} hours')  # 선택한 시간에 해당하는 인덱스를 사용
+    axs[1, 0].plot(X, Q[t_idx // dt, :], label=f'{t_idx // 3600} hours')  # 선택한 시간에 해당하는 인덱스를 사용
     axs[1, 0].set_xlabel('Distance (meters)')
     axs[1, 0].set_ylabel('Flow rate (CMS)')
     axs[1, 0].legend()
