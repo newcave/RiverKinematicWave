@@ -67,8 +67,8 @@ st.write("| ----------------------------------------|")
 
 
 B = st.slider('Channel bottom width (meters)', min_value=1.0, max_value=1000.0, value=100.0)
-L = st.slider('Channel length (meters)', min_value=1000.0, max_value=100000.0, value=10000.0)
-So = st.slider('Channel slope', min_value=0.001, max_value=0.1, value=0.05, step=0.001)
+L = st.slider('Channel length (meters)', min_value=1000.0, max_value=100000.0, value=10000.0, step=1000.0)
+So = st.slider('Channel slope', min_value=0.001, max_value=0.1, value=0.05, step=0.01)
 n = st.slider('Manning roughness coefficient', min_value=0.01, max_value=0.05, value=0.025, step=0.001)
 Q0 = st.slider('Flow rate at upstream boundary (CMS)', min_value=1.0, max_value=500.0, value=200.0)
 dx = st.slider('Distance step size (meters)', min_value=10.0, max_value=1000.0, value=500.0)
