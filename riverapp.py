@@ -59,14 +59,14 @@ inflow = np.zeros_like(t)
     
 ### 인터벌 고려해서 입력 받음 끝
 
-inflow[:4 * 3600 //30] = inflow_0
-inflow[4 * 3600 //30:8 * 3600 //30] = inflow_4
-inflow[8 * 360 //300:12 * 3600 //30] = inflow_8
-inflow[12 * 3600 //30:16 * 3600 //30] = inflow_12
-inflow[16 * 3600 //30:20 * 3600 //30] = inflow_16
-inflow[20 * 3600 //30:24 * 3600 //30] = inflow_20
-inflow[24 * 3600 //30:28 * 3600 //30] = inflow_24
-inflow[28 * 3600 //30:32 * 3600 //30] = inflow_28
+inflow[:4 * 3600 //dt]= inflow_0
+inflow[4 * 3600 //dt:8 * 3600 //dt] = inflow_4
+inflow[8 * 3600 //dt:12 * 3600 //dt] = inflow_8
+inflow[12 * 3600 //dt:16 * 3600 //dt] = inflow_12
+inflow[16 * 3600 //dt:20 * 3600 //dt] = inflow_16
+inflow[20 * 3600 //dt:24 * 3600 //dt] = inflow_20
+inflow[24 * 3600 //dt:28 * 3600 //dt] = inflow_24
+inflow[28 * 3600 //dt:32 * 3600 //dt] = inflow_28
 
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
 
@@ -87,14 +87,13 @@ axs[0, 1].set_xlabel('Time (seconds)')
 axs[0, 1].set_ylabel('Flow rate (CMS)')
 axs[0, 1].legend()
 
+axs[1, 0].plot(X, Q[-1, :])
+axs[1, 0].set_xlabel('Distance (meters)')
+axs[1, 0].set_ylabel('Flow rate (CMS)')
 
-#axs[0, 1].plot(X, Q[-1, :])
-#axs[0, 1].set_xlabel('Distance (meters)')
-#axs[0, 1].set_ylabel('Flow rate (CMS)')
-
-mesh = axs[1, 0].pcolormesh(T, X, Q[:-1, :-1].T, cmap='coolwarm', shading='flat')
-axs[1, 0].set_xlabel('Time (hours)')
-axs[1, 0].set_ylabel('Distance (meters)')
+mesh = axs[1, 1].pcolormesh(T, X, Q[:-1, :-1].T, cmap='coolwarm', shading='flat')
+axs[1, 1].set_xlabel('Time (hours)')
+axs[1, 1].set_ylabel('Distance (meters)')
 
 # Display the plot in Streamlit
 st.pyplot(fig)
