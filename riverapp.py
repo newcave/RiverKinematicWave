@@ -87,7 +87,7 @@ axs[2].set_title('Flow rate (CMS)')
 plt.colorbar(mesh)
 
 # Plot h
-axs[1].plot(X, h)
+axs[3].plot(X, h)
 axs[3].set_xlabel('Time (hours)')
 axs[3].set_ylabel('Distance (meters)')
 axs[3].set_title('Water Level(meters)')
