@@ -35,14 +35,14 @@ dt = 50.0
 
 # Create sliders for inflow values at different time intervals
 inflow_range = st.slider("총분석시간(hrs)", 0, 48, 24)
-inflow_0 = st.slider("Inflow for t=0 to 4 hrs. ", 0, 1000, 200)
-inflow_4 = st.slider("Inflow for t=4 to 8 hrs.", 0, 1000, 400)
-inflow_8 = st.slider("Inflow for t=8 to 12 hrs.", 0, 1000, 800)
-inflow_12 = st.slider("Inflow for t=12 to 16 hrs.", 0, 1000, 1600)
-inflow_16 = st.slider("Inflow for t=16 to 20 hrs.", 0, 1000, 3200)
-inflow_20 = st.slider("Inflow for t=20 to 24 hrs.", 0, 1000, 1600)
-inflow_24 = st.slider("Inflow for t=24 to 28 hrs.", 0, 1000, 800)
-inflow_28 = st.slider("Inflow for t=28 to 32 hrs.", 0, 1000, 400)
+inflow_0 = st.slider("Inflow for t=0 to 4 hrs. ", 0, 5000, 200)
+inflow_4 = st.slider("Inflow for t=4 to 8 hrs.", 0, 5000, 400)
+inflow_8 = st.slider("Inflow for t=8 to 12 hrs.", 0, 5000, 800)
+inflow_12 = st.slider("Inflow for t=12 to 16 hrs.", 0, 5000, 1600)
+inflow_16 = st.slider("Inflow for t=16 to 20 hrs.", 0, 5000, 3200)
+inflow_20 = st.slider("Inflow for t=20 to 24 hrs.", 0, 5000, 1600)
+inflow_24 = st.slider("Inflow for t=24 to 28 hrs.", 0, 5000, 800)
+inflow_28 = st.slider("Inflow for t=28 to 32 hrs.", 0, 5000, 400)
 
 t = np.arange(0, inflow_range*3600, dt)
 
