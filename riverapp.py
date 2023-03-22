@@ -47,14 +47,14 @@ inflow_28 = st.slider("Inflow for t=28 to 32 hrs.", 0, 1000, 400)
 t = np.arange(0, inflow_range*3600, dt)
 
 inflow = np.zeros_like(t)
-inflow[:4] = inflow_0
-inflow[4:8] = inflow_4
-inflow[8:12] = inflow_8
-inflow[12:16] = inflow_12
-inflow[16:20] = inflow_16
-inflow[20:24] = inflow_20
-inflow[24:28] = inflow_24
-inflow[28:32] = inflow_28
+inflow[:4 * 3600] = inflow_0
+inflow[4 * 3600:8 * 3600] = inflow_4
+inflow[8 * 3600:12 * 3600] = inflow_8
+inflow[12 * 3600:16 * 3600] = inflow_12
+inflow[16 * 3600:20 * 3600] = inflow_16
+inflow[20 * 3600:24 * 3600] = inflow_20
+inflow[24 * 3600:28 * 3600] = inflow_24
+inflow[28 * 3600:32 * 3600] = inflow_28
 
 
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
