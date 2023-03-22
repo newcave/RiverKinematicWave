@@ -53,9 +53,9 @@ inflow[4:8] = inflow_4
 inflow[8:12] = inflow_8
 inflow[12:16] = inflow_12
 inflow[16:20] = inflow_16
-inflow[20:24] = inflow_24
-inflow[24:28] = inflow_28
-inflow[28:32] = inflow_32
+inflow[20:24] = inflow_20
+inflow[24:28] = inflow_24
+inflow[28:32] = inflow_28
 
 
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
