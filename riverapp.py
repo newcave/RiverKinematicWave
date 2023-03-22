@@ -66,7 +66,7 @@ Q = kinematic_wave_equation(B, L, So, n, Q0, dx, dt, Qin)
 # Plot the results
 X = np.linspace(0, L, Q.shape[1])
 T, X = np.meshgrid(t/3600, X)
-fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+fig, axs = plt.subplots(2, 2, figsize=(25, 10))
 fig.suptitle('Kinematic Wave Equation Results', fontsize=16)
 
 # Plot T
@@ -80,12 +80,19 @@ axs[1].set_xlabel('Distance (meters)')
 axs[1].set_ylabel('Flow rate (CMS)')
 
 # Plot Q
-#mesh = axs[2].pcolormesh(T, X, Q[:-1,:-1].T, cmap='coolwarm', shading='flat')
-mesh = axs[2].pcolormesh(T, X, Q.T, cmap='coolwarm', shading='flat')
+mesh = axs[2].pcolormesh(T, X, Q[:-1,:-1].T, cmap='coolwarm', shading='flat')
 axs[2].set_xlabel('Time (hours)')
 axs[2].set_ylabel('Distance (meters)')
 axs[2].set_title('Flow rate (CMS)')
 plt.colorbar(mesh)
+
+# Plot h
+axs[1].plot(X, h)
+axs[3].set_xlabel('Time (hours)')
+axs[3].set_ylabel('Distance (meters)')
+axs[3].set_title('Water Level(meters)')
+plt.colorbar(mesh)
+
 
 # Display the plot
 # st.set_option('deprecation.showPyplotGlobalUse', False)
