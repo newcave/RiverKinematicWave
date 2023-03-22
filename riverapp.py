@@ -53,8 +53,8 @@ time_intervals = [4 * 3600, 8 * 3600, 12 * 3600, 16 * 3600, 20 * 3600, 24 * 3600
 inflow_values = [inflow_0, inflow_4, inflow_8, inflow_12, inflow_16, inflow_20, inflow_24, inflow_28]
 
 for i in range(len(time_intervals) - 1):
-    start_time = time_intervals[i] / dt
-    end_time = time_intervals[i + 1] / dt
+    start_time = time_intervals[i] // dt
+    end_time = time_intervals[i + 1] // dt
     inflow[start_time:end_time] = inflow_values[i]
        
     
@@ -84,7 +84,7 @@ axs[0, 0].set_xlabel('Time (seconds)')
 axs[0, 0].set_ylabel('Flow rate (CMS)')
 axs[0, 0].legend()
 
-axs[0, 1].plot(t/dt, inflow, 'ro', label='Input Values')
+axs[0, 1].plot(t//dt, inflow, 'ro', label='Input Values')
 axs[0, 1].set_xlabel('Time (seconds)')
 axs[0, 1].set_ylabel('Flow rate (CMS)')
 axs[0, 1].legend()
