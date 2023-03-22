@@ -25,8 +25,8 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
     return Q, h
 
 B = 100.0
-L = 24000.0
-So = 0.001
+L = 2500.0
+So = 0.05
 n = 0.025
 Q0 = 2000.0
 dx = 500.0
@@ -34,7 +34,7 @@ dt = 10.0
 
 
 # Create sliders for inflow values at different time intervals
-inflow_range = st.slider("총분석시간(hrs)", 0, 48, 24)
+inflow_range = st.slider("총분석시간(hrs)", 0, 48, 12)
 inflow_0 = st.slider("Inflow for t=0 to 4 hrs. ", 0, 5000, 200)
 inflow_4 = st.slider("Inflow for t=4 to 8 hrs.", 0, 5000, 400)
 inflow_8 = st.slider("Inflow for t=8 to 12 hrs.", 0, 5000, 800)
