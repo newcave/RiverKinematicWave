@@ -1,28 +1,57 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import math 
 import matplotlib.pyplot as plt
 
 def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
-    nx = int(np.ceil(L/dx))
+    nx = math.ceil(L/dx)
     nt = len(inflow)
-    h = np.zeros((nt, nx))
-    Q = np.zeros((nt, nx))
-    Q[0, :] = Q0
-    h[0, :] = Q[0, :] / (B * So)**0.5 / n**0.6
 
-    C = dt / (dx / (B * h[0, :])**0.5)
+    h = [[0] * nx for i in range(nt)]
+    Q = [[0] * nx for i in range(nt)]
+    S = [0] * nx
 
+    # initialize Q and h at t = 0
+    for i in range(nx):
+        Q[0][i] = Q0
+        h[0][i] = Q0 / (B * math.pow(So, 0.5) * math.pow(n, 0.6))
+
+    # calculate C at t = 0
+    C = dt / (dx / (B * math.pow(h[0][0], 0.5)))
+
+    # calculate S at t = 0
+    S[0] = (h[0][1] - h[0][0]) / dx + So
+    S[nx-1] = (h[0][nx-1] - h[0][nx-2]) / dx + So
+    for i in range(1, nx-1):
+        S[i] = (h[0][i+1] - h[0][i-1]) / (2 * dx) + So
+
+    # solve the kinematic wave equation for all t > 0
     for i in range(1, nt):
-        S = np.gradient(h[i-1, :]) / dx + So
-        Q[i, :] = Q[i-1, :] - C * B * h[i-1, :]**2 * S
-        h[i, :] = (Q[i, :] / (B * S**0.5 * n**0.6))**(3/5)
-        h[i, 0] = h[i, 1]
-        Q[i, 0] = Q[i, 1]
-        h[i, -1] = h[i, -2]
-        Q[i, -1] = Q[i, -2]
 
-    return Q, h
+        # calculate Q at t = i
+        for j in range(nx):
+            Q[i][j] = Q[i-1][j] - C * B * math.pow(h[i-1][j], 2/3) * math.pow(S[j], 1/2) * dt / dx
+
+        # calculate h at t = i
+        for j in range(nx):
+            h[i][j] = Q[i][j] / (B * math.pow(S[j], 1/2) * math.pow(n, 1/6))
+
+        # enforce boundary conditions
+        h[i][0] = h[i][1]
+        Q[i][0] = Q[i][1]
+        h[i][nx-1] = h[i][nx-2]
+        Q[i][nx-1] = Q[i][nx-2]
+
+        # update C and S for the next iteration
+        C = dt / (dx / (B * math.pow(h[i][0], 0.5)))
+        S[0] = (h[i][1] - h[i][0]) / dx + So
+        S[nx-1] = (h[i][nx-1] - h[i][nx-2]) / dx + So
+        for j in range(1, nx-1):
+            S[j] = (h[i][j+1] - h[i][j-1]) / (2 * dx) + So
+
+    # return the final flow rate at the downstream end of the channel
+    return Q[nt-1][nx-1]
 
 st.write("| Parameter | 주요 기본변수  |")
 st.write("| ----------------------------------------|")
