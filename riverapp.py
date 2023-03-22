@@ -88,58 +88,21 @@ axs[0, 1].set_xlabel('Distance (meters)')
 axs[0, 1].set_ylabel('Flow rate (CMS)')
 
 
-# 시간에 따른 강 유량 시각화
-t_list = [4*3600, 12*3600, 20*3600] # 4시간, 12시간, 20시간
-for i, t_idx in enumerate(t_list):
-    axs[1, 0].plot(X, Q[t_idx // dt, 1], label=f'{t_idx // 3600} hours')
-    axs[1, 0].set_xlabel('Distance (meters)')
-    axs[1, 0].set_ylabel('Flow rate (CMS)')
-    axs[1, 0].legend()
-    
-
-
-#t_list = [4*3600, 12*3600, 20*3600] # 4시간, 12시간, 20시간
-#for i, t_idx in enumerate(t_list):
-#    axs[1, 0].plot(X, Q[t_idx // dt, :], label=f'{t_idx // 3600} hours')  # 선택한 시간에 해당하는 인덱스를 사용
-#    axs[1, 0].set_xlabel('Distance (meters)')
-#    axs[1, 0].set_ylabel('Flow rate (CMS)')
-#    axs[1, 0].legend()
-
-mesh = axs[1, 1].pcolormesh(T, X, Q[:-1, :-1].T, cmap='coolwarm', shading='flat')
-axs[1, 1].set_xlabel('Time (hours)')
-axs[1, 1].set_ylabel('Distance (meters)')
-
-# Display the plot in Streamlit
-st.pyplot(fig)
-
-fig2, axs = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
-
-# 강 하류 단면의 수위와 유량의 변화 시각화
-im = axs[0, 0].contourf(X, t_hours, h.T, cmap='YlGnBu')
-axs[0, 0].set_xlabel('Distance (meters)')
-axs[0, 0].set_ylabel('Time (hours)')
-cbar = fig2.colorbar(im, ax=axs[0, 0])
+im = axs[1, 0].contourf(X, t, h.T, cmap='YlGnBu')
+axs[1, 0].set_xlabel('Distance (meters)')
+axs[1, 0].set_ylabel('Time (hours)')
+cbar = fig.colorbar(im, ax=axs[0, 0])
 cbar.set_label('Water depth (meters)')
 
-# 시간에 따른 강 유량 시각화
-t_list = [4*3600, 12*3600, 20*3600] # 4시간, 12시간, 20시간
-for i, t_idx in enumerate(t_list):
-    axs[0, 1].plot(X, Q[t_idx // dt, :], label=f'{t_idx // 3600} hours')
-axs[0, 1].set_xlabel('Distance (meters)')
-axs[0, 1].set_ylabel('Flow rate (CMS)')
-axs[0, 1].legend()
+axs[1, 1].plot(t, inflow, label='Inflow')
+axs[1, 1].set_xlabel('Time (seconds)')
+axs[1, 1].set_ylabel('Flow rate (CMS)')
+axs[1, 1].legend()
 
-# 거리에 따른 유속 시각화
-im = axs[1, 1].contourf(X, t_hours, v.T, cmap='YlGnBu')
-axs[1, 1].set_xlabel('Distance (meters)')
-axs[1, 1].set_ylabel('Time (hours)')
-cbar = fig2.colorbar(im, ax=axs[1, 1])
-cbar.set_label('Water velocity (m/s)')
 
-# 초기 조건에서 강 유량 시각화
-axs[1, 0].plot(X, Q[0, :])
-axs[1, 0].set_xlabel('Distance (meters)')
-axs[1, 0].set_ylabel('Flow rate (CMS)')
+
+
+
 
 plt.tight_layout()
 st.pyplot(fig2)
