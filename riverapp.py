@@ -87,7 +87,7 @@ axs[0, 1].plot(X, Q[0, :])
 axs[0, 1].set_xlabel('Distance (meters)')
 axs[0, 1].set_ylabel('Flow rate (CMS)')
 
-axs[1, 0].plot(t, inflow, label='Inflow')
+axs[1, 0].plot(t, h, label='water level')
 axs[1, 0].set_xlabel('Time (seconds)')
 axs[1, 0].set_ylabel('Flow rate (CMS)')
 axs[1, 0].legend()
