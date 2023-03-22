@@ -24,24 +24,38 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
 
     return Q, h
 
-B = 200.0
+B = 100.0
 L = 24000.0
 So = 0.01
-n = 0.035
+n = 0.025
 Q0 = 2000.0
-dx = 3000.0
-dt = 180.0
+dx = 500.0
+dt = 50.0
 
-t = np.arange(0, 7200, dt)
+
+# Create sliders for inflow values at different time intervals
+inflow_200 = st.slider("Inflow for t=0 to 200 (cms)", 0, 1000, 200)
+inflow_400 = st.slider("Inflow for t=20 to 400 (cms)", 0, 1000, 400)
+inflow_800 = st.slider("Inflow for t=40 to 800 (cms)", 0, 1000, 800)
+inflow_1600 = st.slider("Inflow for t=80 to 1600 (cms)", 0, 1000, 1600)
+inflow_3200 = st.slider("Inflow for t=160 to 3200 (cms)", 0, 1000, 3200)
+inflow_6400 = st.slider("Inflow for t=320 to 6400 (cms)", 0, 1000, 1600)
+inflow_7200 = st.slider("Inflow for t=640 to 7200 (cms)", 0, 1000, 800)
+inflow_9000 = st.slider("Inflow for t=720 to 9000 (cms)", 0, 1000, 400)
+
+t = np.arange(0, 10000, dt)
 inflow = np.zeros_like(t)
-inflow[:20] = 200.0
-inflow[20:40] = 400.0
-inflow[40:80] = 800.0
-inflow[80:160] = 1600.0
-inflow[160:320] = 3200.0
-inflow[320:640] = 1600.0
-inflow[640:720] = 800.0
-inflow[720:900] = 400.0
+
+inflow = np.zeros_like(t)
+inflow[:200] = inflow_200
+inflow[200:400] = inflow_400
+inflow[400:800] = inflow_800
+inflow[800:1600] = inflow_1600
+inflow[1600:3200] = inflow_3200
+inflow[3200:6400] = inflow_6400
+inflow[6400:7200] = inflow_7200
+inflow[7200:9000] = inflow_9000
+
 
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
 
