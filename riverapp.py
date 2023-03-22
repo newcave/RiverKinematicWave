@@ -26,7 +26,7 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
 
 B = 100.0
 L = 24000.0
-So = 0.01
+So = 0.001
 n = 0.025
 Q0 = 2000.0
 dx = 500.0
@@ -34,27 +34,28 @@ dt = 50.0
 
 
 # Create sliders for inflow values at different time intervals
-inflow_200 = st.slider("Inflow for t=0 to 200 (cms)", 0, 1000, 200)
-inflow_400 = st.slider("Inflow for t=20 to 400 (cms)", 0, 1000, 400)
-inflow_800 = st.slider("Inflow for t=40 to 800 (cms)", 0, 1000, 800)
-inflow_1600 = st.slider("Inflow for t=80 to 1600 (cms)", 0, 1000, 1600)
-inflow_3200 = st.slider("Inflow for t=160 to 3200 (cms)", 0, 1000, 3200)
-inflow_6400 = st.slider("Inflow for t=320 to 6400 (cms)", 0, 1000, 1600)
-inflow_7200 = st.slider("Inflow for t=640 to 7200 (cms)", 0, 1000, 800)
-inflow_9000 = st.slider("Inflow for t=720 to 9000 (cms)", 0, 1000, 400)
+inflow_range = st.slider("총분석시간(hrs)", 0, 48, 24)
+inflow_0 = st.slider("Inflow for t=0 to 4 hrs. ", 0, 1000, 200)
+inflow_4 = st.slider("Inflow for t=4 to 8 hrs.", 0, 1000, 400)
+inflow_8 = st.slider("Inflow for t=8 to 12 hrs.", 0, 1000, 800)
+inflow_12 = st.slider("Inflow for t=12 to 16 hrs.", 0, 1000, 1600)
+inflow_16 = st.slider("Inflow for t=16 to 20 hrs.", 0, 1000, 3200)
+inflow_20 = st.slider("Inflow for t=20 to 24 hrs.", 0, 1000, 1600)
+inflow_24 = st.slider("Inflow for t=24 to 28 hrs.", 0, 1000, 800)
+inflow_28 = st.slider("Inflow for t=28 to 32 hrs.", 0, 1000, 400)
 
-t = np.arange(0, 10000, dt)
+t = np.arange(0, 32, dt)
 inflow = np.zeros_like(t)
 
 inflow = np.zeros_like(t)
-inflow[:200] = inflow_200
-inflow[200:400] = inflow_400
-inflow[400:800] = inflow_800
-inflow[800:1600] = inflow_1600
-inflow[1600:3200] = inflow_3200
-inflow[3200:6400] = inflow_6400
-inflow[6400:7200] = inflow_7200
-inflow[7200:9000] = inflow_9000
+inflow[:4] = inflow_0
+inflow[4:8] = inflow_4
+inflow[8:12] = inflow_8
+inflow[12:16] = inflow_12
+inflow[16:20] = inflow_16
+inflow[20:24] = inflow_24
+inflow[24:28] = inflow_28
+inflow[28:32] = inflow_32
 
 
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
