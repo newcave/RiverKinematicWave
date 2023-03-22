@@ -47,7 +47,7 @@ inflow_28 = st.slider("Inflow for t=28 to 32 hrs.", 0, 1000, 400)
 t = np.arange(0, inflow_range*3600, dt)
 
 inflow = np.zeros_like(t)
-inflow[:4*3600] = inflow_0
+inflow[:4] = inflow_0
 inflow[4:8] = inflow_4
 inflow[8:12] = inflow_8
 inflow[12:16] = inflow_12
