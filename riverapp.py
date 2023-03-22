@@ -92,23 +92,21 @@ axs[1, 0].set_xlabel('Time (seconds)')
 axs[1, 0].set_ylabel('Flow rate (CMS)')
 axs[1, 0].legend()
 
+t_list = [4*3600, 8*3600, 10*3600] # 4시간, 12시간, 20시간
+for i, t_idx in enumerate(t_list):
+    axs[1, 1].plot(X, Q[t_idx // dt, :], label=f'{t_idx // 3600} 시간')  # 선택한 시간에 해당하는 인덱스를 사용
+    axs[1, 1].set_xlabel('Distance (meters)')
+    axs[1, 1].set_ylabel('Flow rate (CMS)')
+    axs[1, 1].legend(['After 4hrs', '8hrs', '10hrs'])
+
+
+
+
 #im = axs[1, 0].contourf(X, t, h.T, cmap='YlGnBu')
 #axs[1, 0].set_xlabel('Distance (meters)')
 #axs[1, 0].set_ylabel('Time (hours)')
 #cbar = fig.colorbar(im, ax=axs[0, 0])
 #cbar.set_label('Water depth (meters)')
-
-t_list = [4*3600, 8*3600, 10*3600] # 4시간, 12시간, 20시간
-for i, t_idx in enumerate(t_list):
-    axs[1, 1].plot(X, Q[t_idx // dt, :], label=f'{t_idx // 3600} 시간')  # 선택한 시간에 해당하는 인덱스를 사용
-axs[1, 1].set_xlabel('Distance (meters)')
-axs[1, 1].set_ylabel('Flow rate (CMS)')
-axs[1, 1].legend(['After 4hrs', '8hrs', '10hrs'])
-
-
-
-
-
 
 plt.tight_layout()
 st.pyplot(fig)
