@@ -47,14 +47,27 @@ inflow_28 = st.slider("Inflow for t=28 to 32 hrs.", 0, 5000, 400)
 t = np.arange(0, inflow_range*3600, dt)
 
 inflow = np.zeros_like(t)
-inflow[:4 * 3600] = inflow_0
-inflow[4 * 3600:8 * 3600] = inflow_4
-inflow[8 * 3600:12 * 3600] = inflow_8
-inflow[12 * 3600:16 * 3600] = inflow_12
-inflow[16 * 3600:20 * 3600] = inflow_16
-inflow[20 * 3600:24 * 3600] = inflow_20
-inflow[24 * 3600:28 * 3600] = inflow_24
-inflow[28 * 3600:32 * 3600] = inflow_28
+
+### 인터벌 대로 입력 받음
+time_intervals = [4 * 3600, 8 * 3600, 12 * 3600, 16 * 3600, 20 * 3600, 24 * 3600, 28 * 3600, 32 * 3600]
+inflow_values = [inflow_0, inflow_4, inflow_8, inflow_12, inflow_16, inflow_20, inflow_24, inflow_28]
+
+for i in range(len(time_intervals) - 1):
+    start_time = time_intervals[i] / dt
+    end_time = time_intervals[i + 1] / dt
+    inflow[start_time:end_time] = inflow_values[i]
+       
+    
+### 인터벌 고려해서 입력 받음 끝
+
+#inflow[:4 * 3600] = inflow_0
+#inflow[4 * 3600:8 * 3600] = inflow_4
+#inflow[8 * 3600:12 * 3600] = inflow_8
+#inflow[12 * 3600:16 * 3600] = inflow_12
+#inflow[16 * 3600:20 * 3600] = inflow_16
+#inflow[20 * 3600:24 * 3600] = inflow_20
+#inflow[24 * 3600:28 * 3600] = inflow_24
+#inflow[28 * 3600:32 * 3600] = inflow_28
 
 
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
