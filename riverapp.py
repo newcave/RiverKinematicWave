@@ -25,12 +25,12 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
     return Q, h
 
 B = 100.0
-L = 2500.0
+L = 10000.0
 So = 0.05
 n = 0.025
-Q0 = 2000.0
+Q0 = 200.0
 dx = 500.0
-dt = 60
+dt = 180
 
 
 # Create sliders for inflow values at different time intervals
