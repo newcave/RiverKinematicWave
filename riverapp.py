@@ -19,6 +19,7 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
 
     # calculate C at t = 0
     C = dt / (dx / (B * math.pow(h[0][0], 0.5)))
+    st.write("C =", C)  # Streamlit에서 C 값 출력
 
     # calculate S at t = 0
     S[0] = (h[0][1] - h[0][0]) / dx + So
@@ -45,6 +46,7 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
 
         # update C and S for the next iteration
         C = dt / (dx / (B * math.pow(h[i][0], 0.5)))
+        st.write("C =", C)  # Streamlit에서 C 값 출력
         S[0] = (h[i][1] - h[i][0]) / dx + So
         S[nx-1] = (h[i][nx-1] - h[i][nx-2]) / dx + So
         for j in range(1, nx-1):
