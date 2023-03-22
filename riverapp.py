@@ -84,7 +84,7 @@ axs[0, 0].set_xlabel('Time (seconds)')
 axs[0, 0].set_ylabel('Flow rate (CMS)')
 axs[0, 0].legend()
 
-axs[0, 1].plot(t//dt, inflow, 'ro', label='Input Values')
+axs[0, 1].plot(t*dt, inflow, 'ro', label='Input Values')
 axs[0, 1].set_xlabel('Time (seconds)')
 axs[0, 1].set_ylabel('Flow rate (CMS)')
 axs[0, 1].legend()
