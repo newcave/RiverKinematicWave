@@ -56,7 +56,7 @@ for i in range(len(time_intervals) - 1):
     start_time = time_intervals[i] // dt
     end_time = time_intervals[i + 1] // dt
     inflow[start_time:end_time] = inflow_values[i]
-       
+
     
 ### 인터벌 고려해서 입력 받음 끝
 
