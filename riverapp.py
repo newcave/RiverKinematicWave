@@ -66,8 +66,8 @@ Q = kinematic_wave_equation(B, L, So, n, Q0, dx, dt, Qin)
 # Plot the results
 X = np.linspace(0, L, Q.shape[1])
 T, X = np.meshgrid(t/3600, X)
-fig, axs = plt.subplots(1, 3, figsize=(15, 5))
-fig.suptitle('Kinematic Wave Equation Results', fontsize=16)
+fig, axs = plt.subplots(1, 3, figsize=(20, 7))
+fig.suptitle('Kinematic Wave Equation Results', fontsize=20)
 
 # Plot T
 axs[0].plot(t/3600, Qin)
