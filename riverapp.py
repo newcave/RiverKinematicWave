@@ -64,12 +64,14 @@ Q = kinematic_wave_equation(B, L, So, n, Q0, dx, dt, Qin)
 
 # Plot the results
 X = np.linspace(0, L, Q.shape[1])
-# T, X = np.meshgrid(t/3600, X)
-T = np.meshgrid(t/3600, X)
+T, X = np.meshgrid(t/3600, X)
 fig, ax = plt.subplots()
-mesh = ax.pcolormesh(T, X, Q[:-1,:-1], cmap='coolwarm') 
+mesh = ax.pcolormesh(T, X, Q[:-1,:-1], cmap='coolwarm', shading='flat')
 ax.set_xlabel('Time (hrs.)')
-ax.set_ylabel('Distance (meter)')
+ax.set_ylabel('Distance (meters)')
 ax.set_title('Flow rate (CMS)')
 plt.colorbar(mesh)
 st.pyplot(fig)
+
+
+
