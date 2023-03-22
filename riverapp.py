@@ -109,5 +109,5 @@ axs[1, 1].legend()
 
 
 plt.tight_layout()
-st.pyplot(fig2)
+st.pyplot(fig)
 
