@@ -69,7 +69,6 @@ for i in range(len(time_intervals) - 1):
 #inflow[24 * 3600:28 * 3600] = inflow_24
 #inflow[28 * 3600:32 * 3600] = inflow_28
 
-
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
 
 X = np.linspace(0, L, Q.shape[1])
