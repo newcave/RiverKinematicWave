@@ -30,7 +30,7 @@ So = 0.05
 n = 0.025
 Q0 = 2000.0
 dx = 500.0
-dt = 60.0
+dt = 30.0
 
 
 # Create sliders for inflow values at different time intervals
@@ -67,14 +67,19 @@ fig.suptitle('Kinematic Wave Results', fontsize=16)
 
 # Plot the inflow and input values on the same axis (axs[0, 0])
 axs[0, 0].plot(t, inflow, label='Inflow')
-axs[0, 0].plot(t*dt, inflow, 'ro', label='Input Values')
 axs[0, 0].set_xlabel('Time (seconds)')
 axs[0, 0].set_ylabel('Flow rate (CMS)')
 axs[0, 0].legend()
 
-axs[0, 1].plot(X, Q[-1, :])
-axs[0, 1].set_xlabel('Distance (meters)')
+axs[0, 1].plot(t*dt, inflow, 'ro', label='Input Values')
+axs[0, 1].set_xlabel('Time (seconds)')
 axs[0, 1].set_ylabel('Flow rate (CMS)')
+axs[0, 1].legend()
+
+
+#axs[0, 1].plot(X, Q[-1, :])
+#axs[0, 1].set_xlabel('Distance (meters)')
+#axs[0, 1].set_ylabel('Flow rate (CMS)')
 
 mesh = axs[1, 0].pcolormesh(T, X, Q[:-1, :-1].T, cmap='coolwarm', shading='flat')
 axs[1, 0].set_xlabel('Time (hours)')
