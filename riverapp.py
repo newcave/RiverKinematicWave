@@ -123,3 +123,30 @@ for i, t_idx in enumerate(t_list):
 plt.tight_layout()
 st.pyplot(fig)
 
+
+# Save the results to a CSV file for a given time interval
+time_interval = 2 * 3600 # 2 hours
+result_df = pd.DataFrame({'Distance (meters)': X[0, :], 'Flow rate (CMS)': Q[(time_interval // dt), :]})
+result_df.to_csv(f'kinematic_wave_result_{time_interval // 3600}hrs.csv', index=False)
+
+# Plot the results at a given time interval
+axs[1, 1].plot(X, Q[time_interval // dt, :], label=f'{time_interval // 3600} hours')
+axs[1, 1].set_xlabel('Distance (meters)')
+axs[1, 1].set_ylabel('Flow rate (CMS)')
+axs[1, 1].legend()
+
+# Save the figure
+plt.tight_layout()
+st.pyplot(fig)
+
+# Save the CSV file
+st.markdown(f"### Result for {time_interval // 3600} hours")
+st.write(result_df)
+st.markdown(filedownload(result_df, f'kinematic_wave_result_{time_interval // 3600}hrs.csv'), unsafe_allow_html=True)
+
+# Function to create a download link for a given dataframe
+def filedownload(df, filename):
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()
+    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download CSV File</a>'
+    return href
