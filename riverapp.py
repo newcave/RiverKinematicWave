@@ -70,8 +70,7 @@ mesh = ax.pcolormesh(T, X, Q, cmap='coolwarm')
 ax.set_xlabel('Time (hrs.)')
 ax.set_ylabel('Distance (meter)')
 ax.set_title('Flow rate (CMS)')
-#plt.colorbar(mesh)
+plt.colorbar(mesh)
 st.pyplot(fig)
-
 
 
