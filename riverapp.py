@@ -80,11 +80,18 @@ axs[1].set_xlabel('Distance (meters)')
 axs[1].set_ylabel('Flow rate (CMS)')
 
 # Plot Q
-mesh = axs[2].pcolormesh(T, X, Q[:-1,:-1], cmap='coolwarm', shading='flat')
+mesh = axs[2].pcolormesh(T, X, Q, cmap='coolwarm', shading='flat')
 axs[2].set_xlabel('Time (hours)')
 axs[2].set_ylabel('Distance (meters)')
 axs[2].set_title('Flow rate (CMS)')
-plt.colorbar(mesh)
+#plt.colorbar(mesh)
+
+# Plot Q
+#mesh = axs[2].pcolormesh(T, X, Q[:-1,:-1], cmap='coolwarm', shading='flat')
+#axs[2].set_xlabel('Time (hours)')
+#axs[2].set_ylabel('Distance (meters)')
+#axs[2].set_title('Flow rate (CMS)')
+#plt.colorbar(mesh)
 
 # Display the plot
 # st.set_option('deprecation.showPyplotGlobalUse', False)
