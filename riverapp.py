@@ -60,7 +60,7 @@ inflow[7200:9000] = inflow_9000
 Q, h = kinematic_wave(B, L, So, n, Q0, dx, dt, inflow)
 
 X = np.linspace(0, L, Q.shape[1])
-T, X = np.meshgrid(t/3600, X)
+T, X = np.meshgrid(t, X)
 fig, axs = plt.subplots(2, 2, figsize=(25, 10))
 fig.suptitle('Kinematic Wave Results', fontsize=16)
 
