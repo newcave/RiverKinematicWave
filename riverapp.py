@@ -66,8 +66,8 @@ fig.suptitle('Kinematic Wave Results', fontsize=16)
 
 
 # Plot the inflow and input values on the same axis (axs[0, 0])
-axs[0, 0].plot(t/3600, inflow, label='Inflow')
-axs[0, 0].plot(t/3600, inflow, 'ro', label='Input Values')
+axs[0, 0].plot(t, inflow, label='Inflow')
+axs[0, 0].plot(t, inflow, 'ro', label='Input Values')
 axs[0, 0].set_xlabel('Time (hours)')
 axs[0, 0].set_ylabel('Flow rate (CMS)')
 axs[0, 0].legend()
