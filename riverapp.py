@@ -82,10 +82,10 @@ axs[0, 0].set_xlabel('Time (seconds)')
 axs[0, 0].set_ylabel('Flow rate (CMS)')
 axs[0, 0].legend()
 
-axs[0, 1].plot(t*dt, inflow, 'ro', label='Input Values')
-axs[0, 1].set_xlabel('Time (seconds)')
+# 초기 조건에서 강 유량 시각화
+axs[0, 1].plot(X, Q[0, :])
+axs[0, 1].set_xlabel('Distance (meters)')
 axs[0, 1].set_ylabel('Flow rate (CMS)')
-axs[0, 1].legend()
 
 #t_list = [4*3600, 12*3600, 20*3600] # 4시간, 12시간, 20시간
 #for i, t_idx in enumerate(t_list):
@@ -93,17 +93,6 @@ axs[0, 1].legend()
 #    axs[1, 0].set_xlabel('Distance (meters)')
 #    axs[1, 0].set_ylabel('Flow rate (CMS)')
 #    axs[1, 0].legend()
-
-
-# t_list = [1*3600, 2*3600, 3*3600] # 1시간, 2시간, 3시간
-# for i, t_idx in enumerate(t_list):
-#    axs[1, 0].plot(X, Q[t_idx // dt, :t_idx // dt + 1], label=f'{t_idx // 3600} hours')  # 선택한 시간에 해당하는 인덱스를 사용
-#    axs[1, 0].plot(X, Q[t_idx // dt : (t_idx // dt) + 1])
-#axs[1, 0].plot(X, Q[50, 60:62])                
-                   #, label=f'{t_idx // 3600} hours')  # 선택한 시간에 해당하는 인덱스를 사용
-#axs[1, 0].set_xlabel('Distance (meters)')
-#axs[1, 0].set_ylabel('Flow rate (CMS)')
-#axs[1, 0].legend()
 
 mesh = axs[1, 1].pcolormesh(T, X, Q[:-1, :-1].T, cmap='coolwarm', shading='flat')
 axs[1, 1].set_xlabel('Time (hours)')
