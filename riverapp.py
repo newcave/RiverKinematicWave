@@ -26,13 +26,13 @@ for i in range(1, nt):
     # Compute the slope
     S = np.gradient(h[i-1, :])/dx + So
 
-    # Compute the flow rate
+# Compute the flow rate
     Q[i, :] = Q[i-1, :] - C*B*h[i-1, :]**2*S
 
-    # Compute the flow depth
+# Compute the flow depth
     h[i, :] = (Q[i, :]/(B*S**0.5*n**0.6))**(3/5)
 
-    # Apply boundary conditions
+# Apply boundary conditions
     h[i, 0] = h[i, 1]
     Q[i, 0] = Q[i, 1]
     h[i, -1] = h[i, -2]
@@ -71,8 +71,8 @@ X = np.linspace(0, L, Q.shape[1])
 T, X = np.meshgrid(t/3600, X)
 fig, ax = plt.subplots()
 ax.pcolormesh(T, X, Q, cmap='coolwarm')
-ax.set_xlabel('Time (h)')
-ax.set_ylabel('Distance (ft)')
-ax.set_title('Flow rate (cfs)')
+ax.set_xlabel('Time (hrs.)')
+ax.set_ylabel('Distance (meter)')
+ax.set_title('Flow rate (CMS)')
 plt.colorbar()
 st.pyplot(fig)
