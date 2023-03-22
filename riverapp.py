@@ -98,12 +98,12 @@ axs[1, 0].legend()
 #cbar = fig.colorbar(im, ax=axs[0, 0])
 #cbar.set_label('Water depth (meters)')
 
-t_list = [4*3600, 12*3600, 20*3600] # 4시간, 12시간, 20시간
+t_list = [4*3600, 8*3600, 10*3600] # 4시간, 12시간, 20시간
 for i, t_idx in enumerate(t_list):
     axs[1, 1].plot(X, Q[t_idx // dt, :], label=f'{t_idx // 3600} 시간')  # 선택한 시간에 해당하는 인덱스를 사용
-axs[1, 1].set_xlabel('거리 (미터)')
-axs[1, 1].set_ylabel('유량 (CMS)')
-axs[1, 1].legend(['4시간', '12시간', '20시간'])
+axs[1, 1].set_xlabel('Distance (meters)')
+axs[1, 1].set_ylabel('Flow rate (CMS))
+axs[1, 1].legend(['After 4hrs', '8hrs', '10hrs'])
 
 
 
