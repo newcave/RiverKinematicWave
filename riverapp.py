@@ -86,6 +86,7 @@ axs[1].set_ylabel('Flow rate (CMS)')
 #plt.colorbar(mesh)
 
 # Display the plot
+st.set_option('deprecation.showPyplotGlobalUse', False)
 st.pyplot(fig)
 
 
