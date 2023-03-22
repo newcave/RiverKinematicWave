@@ -50,7 +50,7 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
         st.write('calc started...')
         st.write(i, h[i][0])
         if h[i][0] > 0:
-        C = dt / (dx / (B * math.pow(h[i][0], 0.5)))
+            C = dt / (dx / (B * math.pow(h[i][0], 0.5)))
         
         st.write(f't = {i*dt:.1f}, x = 0, C = {C:.4f}')
         st.write('updated C value')
