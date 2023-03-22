@@ -64,6 +64,7 @@ T, X = np.meshgrid(t/3600, X)
 fig, axs = plt.subplots(2, 2, figsize=(25, 10))
 fig.suptitle('Kinematic Wave Results', fontsize=16)
 
+
 # Plot the inflow and input values on the same axis (axs[0, 0])
 axs[0, 0].plot(t/3600, inflow, label='Inflow')
 axs[0, 0].plot(t/3600, inflow, 'ro', label='Input Values')
