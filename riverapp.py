@@ -30,7 +30,7 @@ So = 0.05
 n = 0.025
 Q0 = 2000.0
 dx = 500.0
-dt = 60.0
+dt = 60
 
 
 # Create sliders for inflow values at different time intervals
