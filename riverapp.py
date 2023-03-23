@@ -37,7 +37,8 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
         # calculate Q at t = i
         for j in range(nx):
             Q[i][j] = Q[i-1][j] - C * B * math.pow(h[i-1][j], 2/3) * math.pow(S[j], 1/2) * dt / dx
-
+            st.write(j,'Q[1][j]값=', Q[i][j])
+            
         # calculate h at t = i
         for j in range(nx):
             h[i][j] = Q[i][j] / (B * math.pow(S[j], 1/2) * math.pow(n, 1/6))
