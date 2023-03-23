@@ -84,7 +84,6 @@ dt = st.slider('Time step size (seconds)', min_value=60, max_value=3600, value=1
 #dx = 500.0
 #dt = 180
 
-
 # Create sliders for inflow values at different time intervals
 inflow_range = st.slider("총분석시간(hrs)", 0, 48, 12)
 inflow_0 = st.slider("Inflow for t=0 to 4 hrs. ", 0, 5000, 200)
