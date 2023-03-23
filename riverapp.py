@@ -79,7 +79,7 @@ So = st.slider('Channel slope', min_value=0.001, max_value=0.1, value=0.05, step
 n = st.slider('Manning roughness coefficient', min_value=0.01, max_value=0.05, value=0.025, step=0.001)
 Q0 = st.slider('Flow rate at upstream boundary (CMS)', min_value=1.0, max_value=500.0, value=200.0)
 dx = st.slider('Distance step size (meters)', min_value=100.0, max_value=1000.0, value=200.0)
-dt = st.slider('Time step size (seconds)', min_value=60, max_value=3600, value=180)
+dt = st.slider('Time step size (seconds)', min_value=60, max_value=1200, value=180, step=60)
 
 #B = 100.0
 #L = 10000.0
