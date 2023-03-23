@@ -16,7 +16,7 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
     for i in range(nx):
         Q[0][i] = Q0
         h[0][i] = Q0 / (B * math.pow(So, 0.5) * math.pow(n, 0.6))
-        st.write(i,'에서의 h[0][i]값=', h[0][i])
+        st.write(i,'에서의 h[0][i]값=', h[0][i], 'nx'=, nx)
 
     # calculate C at t = 0
     C = dt / (dx / (B * math.pow(h[0][0], 0.5)))
