@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
     nx = math.ceil(L/dx)
     nt = len(inflow)
+    st.write('nt = len(inflow)값=',nt)
 
     h = [[0] * nx for i in range(nt)]
     Q = [[0] * nx for i in range(nt)]
