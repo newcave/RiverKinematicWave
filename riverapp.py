@@ -28,7 +28,9 @@ def kinematic_wave(B, L, So, n, Q0, dx, dt, inflow):
     S[nx-1] = (h[0][nx-1] - h[0][nx-2]) / dx + So
     for i in range(1, nx-1):
         S[i] = (h[0][i+1] - h[0][i-1]) / (2 * dx) + So
-
+        
+        st.write(i,'S[i]값=', S[i])
+        
     # solve the kinematic wave equation for all t > 0
     for i in range(1, nt):
 
